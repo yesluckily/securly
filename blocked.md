@@ -8,7 +8,7 @@ ill go over each part of this url one by one
 <br>
 <br>
 <br>
- - ?useremail= (a query. without this query, the base url is [shown differently](https://www.securly.com/blocked))<br><br>
+ - ?useremail= (a query. without this query, the base url is shown differently (https://www.securly.com/blocked))<br><br>
  - ?reason= (a query. known states are below:<br>
     - domainblockedforuser<br>
       )<br><br>
@@ -33,4 +33,6 @@ ill go over each part of this url one by one
  ---- 4 (All Staff)<br>
  ---- 5+ (Base/Default Policy)<br>
  ---- )<br><br>
- - ?keyword= (a query. this is a fun one, you can use this html page)
+ - ?keyword= (a query. this is a fun one, you can use this html (https://github.com/yesluckily/securly/blob/main/base64.html) page to translate text to base64 and vice versa)<br><br>
+
+ - ?url= (a query. this is also a fun one, you can use this html page (https://github.com/yesluckily/securly/blob/main/base64.html) to translate text to base64 and vice versa)<br><br>
