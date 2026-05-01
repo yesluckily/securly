@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Combiner Tool</title>
+    <script src="https://tailwindcss.com"></script>
+    <style>
+        @import url('https://googleapis.com');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .notification {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center py-12 px-4">
+
+    <div class="max-w-2xl w-full">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-slate-900 mb-2">URL Combiner</h1>
+            <p class="text-slate-600 text-sm">Generate formatted block URLs for Securly quickly and accurately.</p>
+        </div>
+
+        <!-- Main Card -->
+        <div class="glass-card rounded-2xl shadow-xl p-6 md:p-8">
+            <!-- Base URL Section -->
+            <div class="mb-6">
+                <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Base URL</label>
+                <div class="bg-slate-100 px-4 py-3 rounded-lg border border-slate-200 text-slate-700 font-mono text-sm break-all">
+                    https://securly.com/blocked
+                </div>
+            </div>
+
+            <!-- Input Section -->
+            <div class="mb-6">
+                <label for="emailInput" class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">User Email Value</label>
+                <textarea 
+                    id="emailInput" 
+                    placeholder="Enter email address here..." 
+                    class="w-full h-32 px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none text-slate-800 placeholder:text-slate-400"
+                ></textarea>
+                <p class="mt-2 text-xs text-slate-400 italic">The value above will be appended as ?useremail=[value]</p>
+            </div>
+
+            <!-- Result Section -->
+            <div class="mt-8 pt-8 border-t border-slate-100">
+                <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Generated URL</label>
+                <div class="relative group">
+                    <div 
+                        id="resultDisplay" 
+                        class="w-full min-h-[56px] px-4 py-4 pr-12 rounded-xl bg-slate-900 text-blue-400 font-mono text-sm break-all flex items-center"
+                    >
+                        https://securly.com
+                    </div>
+                    <button 
+                        id="copyBtn"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg transition-colors"
+                        title="Copy to clipboard"
+                    >
+                        <svg xmlns="http://w3.org" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidden input for clipboard hack -->
+        <input type="text" id="clipboardHelper" class="fixed -top-full left-0 opacity-0">
+
+        <!-- Footer Info -->
+        <div class="mt-6 text-center text-slate-400 text-xs">
+            Built for efficiency. Enter a value above to see the URL update instantly.
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="copyNotification" class="notification fixed bottom-8 bg-slate-900 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-2">
+        <svg xmlns="http://w3.org" class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+        URL copied to clipboard!
+    </div>
+
+    <script>
+        const emailInput = document.getElementById('emailInput');
+        const resultDisplay = document.getElementById('resultDisplay');
+        const copyBtn = document.getElementById('copyBtn');
+        const clipboardHelper = document.getElementById('clipboardHelper');
+        const notification = document.getElementById('copyNotification');
+
+        const BASE_URL = "https://securly.com/blocked";
+
+        function updateURL() {
+            const val = emailInput.value.trim();
+            // Encode the value to ensure it's a valid URL parameter
+            const encodedVal = encodeURIComponent(val);
+            const finalURL = `${BASE_URL}?useremail=${encodedVal}`;
+            
+            resultDisplay.textContent = finalURL;
+        }
+
+        function showNotification() {
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        function copyToClipboard() {
+            const textToCopy = resultDisplay.textContent;
+            clipboardHelper.value = textToCopy;
+            clipboardHelper.select();
+            clipboardHelper.setSelectionRange(0, 99999); // For mobile devices
+
+            try {
+                document.execCommand('copy');
+                showNotification();
+            } catch (err) {
+                console.error('Unable to copy', err);
+            }
+        }
+
+        // Listen for input changes
+        emailInput.addEventListener('input', updateURL);
+
+        // Copy button action
+        copyBtn.addEventListener('click', copyToClipboard);
+
+        // Initial call
+        updateURL();
+    </script>
+</body>
+</html>
