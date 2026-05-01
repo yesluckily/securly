@@ -35,4 +35,4 @@ ill go over each part of this url one by one
  - )<br><br>
 #### ?keyword= (a query. this is a fun one, you can use this html (https://github.com/yesluckily/securly/blob/main/base64.html) page to translate text to base64 and vice versa. this is different than "?url=". ?keyword= is the word/reason the page got blocked, commonly used with search elements in websites.)<br><br>
 
- / ?url= (a query. this is also a fun one, you can use this html page (https://github.com/yesluckily/securly/blob/main/base64.html) to translate text to base64 and vice versa. this is different than "?keyword=". ?url= is the url that got blocked.)<br><br>
+#### ?url= (a query. this is also a fun one, you can use this html page (https://github.com/yesluckily/securly/blob/main/base64.html) to translate text to base64 and vice versa. this is different than "?keyword=". ?url= is the url that got blocked.)<br><br>
