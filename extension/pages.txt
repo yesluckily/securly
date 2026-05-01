@@ -1,0 +1,7 @@
+chrome-extension://aceopacgaepdcelohobicpffbbejnfac/diagnostics.html
+chrome-extension://aceopacgaepdcelohobicpffbbejnfac/share-screen.html
+chrome-extension://aceopacgaepdcelohobicpffbbejnfac/blocked.html
+chrome-extension://aceopacgaepdcelohobicpffbbejnfac/blocked_urls.html
+chrome-extension://aceopacgaepdcelohobicpffbbejnfac/closed.html
+chrome-extension://aceopacgaepdcelohobicpffbbejnfac/newtab.html
+chrome-extension://aceopacgaepdcelohobicpffbbejnfac/frozen.html
