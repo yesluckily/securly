@@ -7,4 +7,4 @@ this file will contain the definition of every file in this repository
 
 
 ### /extension (securly chrome extension)
- - manifest.json   -   the manifest file, or blueprint for the securly chrome extension. [link](chrome-extension://ckecmkbnoanpgplccmnoikfmpcdladkc/manifest.json)
+ - manifest.json   -   the manifest file, or blueprint for the securly chrome extension. (chrome-extension://ckecmkbnoanpgplccmnoikfmpcdladkc/manifest.json)
