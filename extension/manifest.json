@@ -1,0 +1,46 @@
+{
+   "action": {
+      "default_icon": {
+         "38": "icons/icon38.png"
+      },
+      "default_popup": "src/chat-popover/chat-popover.html",
+      "default_title": "__MSG_extName__"
+   },
+   "author": "hapara",
+   "background": {
+      "service_worker": "webpack/background-1557afd5ab98bbb7d584.js"
+   },
+   "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self';"
+   },
+   "default_locale": "en",
+   "description": "__MSG_extDescription__",
+   "externally_connectable": {
+      "ids": [ "balenkmpebblahmajkhkojpblggbnipp", "kknjedgijbmffcfjmhegoaahkcienndc", "feahffpjnjlbbjjocajdmbbgbmplnpji", "hpamladjhjimikgajbgjmcopoejbpnfp" ],
+      "matches": [ "https://workspace-test.teacherdashboard.com/*" ]
+   },
+   "homepage_url": "http://hapara.com/",
+   "host_permissions": [ "\u003Call_urls>", "file://*/*" ],
+   "icons": {
+      "128": "icons/icon128.png",
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+   },
+   "incognito": "split",
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxrxVR9PoPjfIUQnMmKQLzFhIVNHoJX5EGHQrxgzqo9oO4faCAv6crbyyEh6B3Y+8s4GpRsjKzKaY2LwyxmHxfToAlZk50AtfAbicUAvEadXodC3l3V/xxsaiPtGhDJc+16LfZzYgrDHTmgoXaEH48uq+MaR0vzsB+ciXkqDKKk9P50GxhFTL/hPS/kPwVUcQxAcAp2F6ZSv5vv0YRA3icYMWoJOK9uEjIO1ehI3KGqMey9QR6/rjLG9p57pKe0t/CGl+7I+8BJdhCV9DLYXAG1bz+YbVGxyoTg/NznXLOxZmRKqkaTfx/G9gXHIWUzu4A/LQgtjDqXVnvYkZTgvh5wIDAQAB",
+   "manifest_version": 3,
+   "minimum_chrome_version": "28",
+   "name": "__MSG_extName__",
+   "oauth2": {
+      "client_id": "545638117049-ntq3o6qk51b5rr8ku0kea6n8sfurekhp.apps.googleusercontent.com",
+      "scopes": [ "https://www.googleapis.com/auth/userinfo.email" ]
+   },
+   "permissions": [ "windows", "system.display", "identity", "identity.email", "notifications", "tabs", "activeTab", "webRequest", "webNavigation", "webRequestBlocking", "storage", "gcm", "idle", "notifications", "alarms", "scripting" ],
+   "update_url": "https://extension.hapara.com/extension/updates/manifest-update-url-fallback",
+   "version": "6.9.0",
+   "version_name": "6.9.0 (e029b6e)",
+   "web_accessible_resources": [ {
+      "matches": [ "\u003Call_urls>" ],
+      "resources": [ "src/chat/*", "test/*", "webpack/test.js", "diagnostics.html", "share-screen.html", "newtab.html", "frozen.html", "popup-message.html", "closed.html", "blocked_urls.html", "blocked.html" ]
+   } ]
+}
