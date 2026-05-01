@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h2>base64 translator</h2>
+    <div style="display: flex; gap: 10px;">
+        <textarea id="left" placeholder="input" rows="10" cols="30"></textarea>
+        <button id="toggleBtn">Translate to Base64 →</button>
+        <textarea id="right" placeholder="output" rows="10" cols="30" readonly></textarea>
+    </div>
+
+    <script>
+        const left = document.getElementById('left');
+        const right = document.getElementById('right');
+        const btn = document.getElementById('toggleBtn');
+        
+        let encodeMode = true;
+
+        btn.addEventListener('click', () => {
+            encodeMode = !encodeMode;
+            btn.innerText = encodeMode ? "Translate to Base64 →" : "← Translate to Text";
+            left.placeholder = encodeMode ? "Input Text" : "Input Base64";
+            right.placeholder = encodeMode ? "Base64 Output" : "Text Output";
+            left.value = "";
+            right.value = "";
+        });
+
+        left.addEventListener('input', () => {
+            try {
+                if (encodeMode) {
+                    right.value = btoa(unescape(encodeURIComponent(left.value)));
+                } else {
+                    right.value = decodeURIComponent(escape(atob(left.value)));
+                }
+            } catch (e) {
+                right.value = "Invalid Input";
+            }
+        });
+    </script>
+
+</body>
+</html>
